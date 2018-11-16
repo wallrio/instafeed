@@ -1,5 +1,5 @@
 {
-    "name": "wallrio/instaFeed",
+    "name": "wallrio/instafeed",
     "version":"0.0.1",
     "type": "library",
     "description": "captures instagram user posts",
