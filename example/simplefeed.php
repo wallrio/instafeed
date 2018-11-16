@@ -8,6 +8,7 @@
 	use InstaFeed\Profile as Profile;
 	$profile = new Profile();
 
-	$feed = $profile->get('wallace.rio');
+	$profile->username('wallace.rio');
+	$feed = $profile->get();
 		
 	print_r($feed);
