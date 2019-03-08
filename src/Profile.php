@@ -91,6 +91,8 @@ class Profile{
 
 		$mediasNodes = $feed['entry_data']['ProfilePage'][0]['graphql']['user']['edge_owner_to_timeline_media']['edges'];
 
+		// print_r($mediasNodes);
+
 		$medias = array();
 		
 		if(count($mediasNodes) > 0)
@@ -111,23 +113,37 @@ class Profile{
 			
 		}
 		
+		$id = isset($feed['entry_data']['ProfilePage'][0]['graphql']['user']['id'])?$feed['entry_data']['ProfilePage'][0]['graphql']['user']['id']:'';
+		$name = isset($feed['entry_data']['ProfilePage'][0]['graphql']['user']['full_name'])?$feed['entry_data']['ProfilePage'][0]['graphql']['user']['full_name']:'';
+		$username = isset($feed['entry_data']['ProfilePage'][0]['graphql']['user']['username'])?$feed['entry_data']['ProfilePage'][0]['graphql']['user']['username']:'';
+		$private = isset($feed['entry_data']['ProfilePage'][0]['graphql']['user']['private'])?$feed['entry_data']['ProfilePage'][0]['graphql']['user']['private']:'';
+		$description = isset($feed['entry_data']['ProfilePage'][0]['graphql']['user']['biography'])?$feed['entry_data']['ProfilePage'][0]['graphql']['user']['biography']:'';
+		$email = isset($feed['entry_data']['ProfilePage'][0]['graphql']['user']['business_email'])?$feed['entry_data']['ProfilePage'][0]['graphql']['user']['business_email']:'';
+		$phone = isset($feed['entry_data']['ProfilePage'][0]['graphql']['user']['business_phone_number'])?$feed['entry_data']['ProfilePage'][0]['graphql']['user']['business_phone_number']:'';
+		$category = isset($feed['entry_data']['ProfilePage'][0]['graphql']['user']['business_category_name'])?$feed['entry_data']['ProfilePage'][0]['graphql']['user']['business_category_name']:'';
+		$followers = isset($feed['entry_data']['ProfilePage'][0]['graphql']['user']['edge_followed_by']['count'])?$feed['entry_data']['ProfilePage'][0]['graphql']['user']['edge_followed_by']['count']:'';
+		$following = isset($feed['entry_data']['ProfilePage'][0]['graphql']['user']['edge_follow']['count'])?$feed['entry_data']['ProfilePage'][0]['graphql']['user']['edge_follow']['count']:'';
+		$site = isset($feed['entry_data']['ProfilePage'][0]['graphql']['user']['external_url'])?$feed['entry_data']['ProfilePage'][0]['graphql']['user']['external_url']:'';
+		$address = isset($feed['entry_data']['ProfilePage'][0]['graphql']['user']['business_address_json'])?$feed['entry_data']['ProfilePage'][0]['graphql']['user']['business_address_json']:'';
+		$icon = isset($feed['entry_data']['ProfilePage'][0]['graphql']['user']['profile_pic_url'])?$feed['entry_data']['ProfilePage'][0]['graphql']['user']['profile_pic_url']:'';
+		$mediaCount = isset($feed['entry_data']['ProfilePage'][0]['graphql']['user']['edge_owner_to_timeline_media'])?$feed['entry_data']['ProfilePage'][0]['graphql']['user']['edge_owner_to_timeline_media']:'';
+
 		$data = array(
-			'id' => ($feed['entry_data']['ProfilePage'][0]['graphql']['user']['id']),
-			'name' => ($feed['entry_data']['ProfilePage'][0]['graphql']['user']['full_name']),
-			'username' => ($feed['entry_data']['ProfilePage'][0]['graphql']['user']['username']),
-			'private' => ($feed['entry_data']['ProfilePage'][0]['graphql']['user']['is_private']),
-			'description' => ($feed['entry_data']['ProfilePage'][0]['graphql']['user']['biography']),
-			'email' => ($feed['entry_data']['ProfilePage'][0]['graphql']['user']['business_email']),
-			'phone' => ($feed['entry_data']['ProfilePage'][0]['graphql']['user']['business_phone_number']),
-			'category' => ($feed['entry_data']['ProfilePage'][0]['graphql']['user']['business_category_name']),
-			'followers' => ($feed['entry_data']['ProfilePage'][0]['graphql']['user']['edge_followed_by']['count']),
-			'following' => ($feed['entry_data']['ProfilePage'][0]['graphql']['user']['edge_follow']['count']),
-			'site' => ($feed['entry_data']['ProfilePage'][0]['graphql']['user']['external_url']),
-			'address' => (($feed['entry_data']['ProfilePage'][0]['graphql']['user']['business_address_json'])),
-			'icon' => ($feed['entry_data']['ProfilePage'][0]['graphql']['user']['profile_pic_url']),
-			
-			'mediaCount' => ($feed['entry_data']['ProfilePage'][0]['graphql']['user']['edge_owner_to_timeline_media']['count']),
-			'medias' => ($medias),
+			'id' => $id,
+			'name' => $name,
+			'username' => $username,
+			'private' => $private,
+			'description' => $description,
+			'email' => $email,
+			'phone' => $phone,
+			'category' => $category,
+			'followers' => $followers,
+			'following' => $following,
+			'site' => $site,
+			'address' => $address,
+			'icon' => $icon,			
+			'mediaCount' => $mediaCount,
+			'medias' => $medias,
 			
 		);
 
